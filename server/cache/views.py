@@ -16,8 +16,8 @@ def url(request, url):
 	except Pages.DoesNotExist:
 		response = ("Pagina nueva")
 		# Implementado para evitar la excepcion [SSL: CERTIFICATE_VERIFY_FAILED]
-		context = ssl._create_unverified_context()
-		f = urllib.request.urlopen('http://' + url, context=context)
+		#context = ssl._create_unverified_context()
+		f = urllib.request.urlopen('http://' + url) #, context=context)
 		content = f.read().decode('utf-8')
 		new = Pages(name= url, page = content)
 		new.save()
